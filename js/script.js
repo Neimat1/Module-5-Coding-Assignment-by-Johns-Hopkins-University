@@ -96,24 +96,12 @@ function buildAndShowHomeHTML (categories) {
     homeHtmlUrl,
     function (homeHtml) {
 
-      // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
-      // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
-      // variable's name implies it expects.
-      var chosenCategoryShortName = chooseRandomCategory(categories);
-      console.log(chosenCategoryShortName);
-
-
-      
-      
-      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName",$dc.loadMenuItems(chosenCategoryShortName.short_name));
-      // console.log(homeHtmlToInsertIntoMainPage);
-      // console.log(homeHtmlToInsertIntoMainPage);
-
-      // return homeHtmlToInsertIntoMainPage;
+      var chosenCategoryShortName = chooseRandomCategory(categories);    
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName",`'${chosenCategoryShortName.short_name}'`);
       insertHtml("#main-content",homeHtmlToInsertIntoMainPage);
 
     },
-    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+    false); 
 }
 
 
